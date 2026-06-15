@@ -20,9 +20,7 @@ import Layout from "../layouts/Layout.astro";
     <!-- Hero -->
     <section class="container hero">
       <p class="eyebrow">Software engineer</p>
-      <h1 class="display">
-        I build reliable systems and the tools that keep them legible.
-      </h1>
+      <h1 class="display" aria-label="Building systems that are meant to last"><span id="hero-display"></span><span id="hero-cursor" aria-hidden="true">|</span></h1>
       <p class="lede">
         I'm Sergi—a software engineer focused on distributed systems and
         developer tools. I care about correctness, latency, and code that reads
@@ -46,6 +44,36 @@ import Layout from "../layouts/Layout.astro";
     </section>
   </main>
 </Layout>
+
+<script>
+  import { animate } from "motion";
+
+  const el = document.getElementById("hero-display")!;
+  const cursor = document.getElementById("hero-cursor")!;
+
+  animate(cursor, { opacity: [1, 0] }, { duration: 0.6, repeat: Infinity, direction: "alternate", easing: "steps(1, end)" });
+
+  const strings = [
+    "Building systems that are meant to last",
+    "Full-stack · Backend architecture · Maintainable systems",
+  ];
+
+  const delay = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
+  async function typewriter() {
+    let idx = 0;
+    while (true) {
+      const text = strings[idx];
+      for (let i = 0; i <= text.length; i++) { el.textContent = text.slice(0, i); await delay(55); }
+      await delay(2200);
+      for (let i = text.length; i >= 0; i--) { el.textContent = text.slice(0, i); await delay(28); }
+      await delay(400);
+      idx = (idx + 1) % strings.length;
+    }
+  }
+
+  typewriter();
+</script>
 
 <style>
   .container {
@@ -332,6 +360,13 @@ import Layout from "../layouts/Layout.astro";
   }
   .about-text + .about-text {
     margin-top: var(--space-6);
+  }
+
+  /* ── Typewriter cursor ───────────────────────────────────────────────── */
+  #hero-cursor {
+    display: inline;
+    margin-left: 1px;
+    color: var(--accent);
   }
 
   /* ── Contact ─────────────────────────────────────────────────────────── */
