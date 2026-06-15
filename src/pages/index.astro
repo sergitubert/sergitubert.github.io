@@ -7,10 +7,18 @@ import Layout from "../layouts/Layout.astro";
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="wordmark" href="/">sergi tubert</a>
+      <a class="wordmark" href="/">hi, I'm Sergi Tubert</a>
       <nav class="nav" aria-label="Primary">
-        <a href="https://github.com/sergitubert">github</a>
-        <a href="https://linkedin.com/in/sergitubert">linkedin</a>
+        <a
+          href="https://github.com/sergitubert"
+          target="_blank"
+          rel="noopener noreferrer">github</a
+        >
+        <a
+          href="https://linkedin.com/in/sergitubert"
+          target="_blank"
+          rel="noopener noreferrer">linkedin</a
+        >
         <a href="./cv.pdf" target="_blank" rel="noopener noreferrer">resume</a>
       </nav>
     </div>
@@ -20,11 +28,14 @@ import Layout from "../layouts/Layout.astro";
     <!-- Hero -->
     <section class="container hero">
       <p class="eyebrow">Software engineer</p>
-      <h1 class="display" aria-label="Building systems that are meant to last"><span id="hero-display"></span><span id="hero-cursor" aria-hidden="true">|</span></h1>
-      <p class="lede">
-        I'm Sergi—a software engineer focused on distributed systems and
-        developer tools. I care about correctness, latency, and code that reads
-        like it means what it says.
+      <h1 class="display" aria-label="Building systems that are meant to last">
+        <span id="hero-display"></span><span id="hero-cursor" aria-hidden="true"
+          >|</span
+        >
+      </h1>
+      <p class="eyebrow">
+        Node.js • React • Typescript • Azure • Hexagonal Architecture •
+        Event-Driven Architecture
       </p>
     </section>
 
@@ -51,11 +62,20 @@ import Layout from "../layouts/Layout.astro";
   const el = document.getElementById("hero-display")!;
   const cursor = document.getElementById("hero-cursor")!;
 
-  animate(cursor, { opacity: [1, 0] }, { duration: 0.6, repeat: Infinity, direction: "alternate", easing: "steps(1, end)" });
+  animate(
+    cursor,
+    { opacity: [1, 0] },
+    {
+      duration: 0.6,
+      repeat: Infinity,
+      direction: "alternate",
+      easing: "steps(1, end)",
+    },
+  );
 
   const strings = [
-    "Building systems that are meant to last",
-    "Full-stack · Backend architecture · Maintainable systems",
+    "Building maintainable systems that are meant to last.",
+    "Full-stack engineer. Backend at heart.",
   ];
 
   const delay = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -64,9 +84,15 @@ import Layout from "../layouts/Layout.astro";
     let idx = 0;
     while (true) {
       const text = strings[idx];
-      for (let i = 0; i <= text.length; i++) { el.textContent = text.slice(0, i); await delay(55); }
+      for (let i = 0; i <= text.length; i++) {
+        el.textContent = text.slice(0, i);
+        await delay(55);
+      }
       await delay(2200);
-      for (let i = text.length; i >= 0; i--) { el.textContent = text.slice(0, i); await delay(28); }
+      for (let i = text.length; i >= 0; i--) {
+        el.textContent = text.slice(0, i);
+        await delay(28);
+      }
       await delay(400);
       idx = (idx + 1) % strings.length;
     }
@@ -158,6 +184,10 @@ import Layout from "../layouts/Layout.astro";
     color: var(--text-tertiary);
     margin-bottom: var(--space-5);
   }
+  .display + .eyebrow {
+    margin-top: var(--space-8);
+    font-style: italic;
+  }
   .hero {
     padding-block: var(--space-24) var(--space-20);
   }
@@ -167,11 +197,9 @@ import Layout from "../layouts/Layout.astro";
     letter-spacing: var(--display-tracking);
     line-height: var(--display-leading);
     font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
-    max-width: 18ch;
   }
   .lede {
     margin-top: var(--space-6);
-    max-width: var(--max-width-prose);
     font-size: var(--text-lg);
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
