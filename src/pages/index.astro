@@ -41,17 +41,26 @@ import Layout from "../layouts/Layout.astro";
 
     <hr class="container rule" />
 
-    <!-- Contact -->
+    <!-- Connect -->
     <section id="contact" class="container section contact">
-      <div class="section-head">
-        <h2>Get in touch</h2>
-        <p class="section-meta">
-          Open to interesting problems and good conversations.
-        </p>
-      </div>
-      <a class="btn btn-primary btn-lg" href="mailto:stubertsabater@gmail.com">
-        stubertsabater@gmail.com
-      </a>
+      <h2 class="connect-heading">connect</h2>
+      <p class="connect-text">
+        follow me on <a
+          href="https://x.com/sergiitubert"
+          target="_blank"
+          rel="noopener noreferrer">x</a
+        >, view my code on <a
+          href="https://github.com/sergitubert"
+          target="_blank"
+          rel="noopener noreferrer">github</a
+        >, have a <a
+          href="https://linkedin.com/in/sergitubert"
+          target="_blank"
+          rel="noopener noreferrer">quick chat</a
+        > with me, or email me at <a href="mailto:stubertsabater@gmail.com"
+          >stubertsabater@gmail.com</a
+        >
+      </p>
     </section>
   </main>
 </Layout>
@@ -398,8 +407,25 @@ import Layout from "../layouts/Layout.astro";
   }
 
   /* ── Contact ─────────────────────────────────────────────────────────── */
-  .contact .btn {
-    width: fit-content;
+  .connect-heading {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-4);
+  }
+  .connect-text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    max-width: var(--max-width-prose);
+  }
+  .connect-text a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .connect-text a:hover {
+    color: var(--accent-hover);
   }
 
   /* ── Footer ──────────────────────────────────────────────────────────── */
